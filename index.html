@@ -1,466 +1,1473 @@
-/* ==========================================
-STUDYVAULT JAVASCRIPT
-========================================== */
+<!DOCTYPE html>
 
-/* PROFILE */
+<html lang="en">
 
-let student = {
+<head>
 
 ```
-name: "",
-roll: "",
-department: "",
-college: "",
-mobile: "",
-email: ""
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>StudyVault</title>
+
+<link
+    rel="stylesheet"
+    href="style.css">
 ```
 
-};
+</head>
 
-/* ==========================================
-SIDEBAR
-========================================== */
+<body>
 
-function toggleSidebar() {
+<!-- ==================================================
+     TOP BAR
+================================================== -->
 
-```
-const sidebar =
-    document.getElementById("sidebar");
-
-sidebar.classList.toggle("open");
-```
-
-}
-
-/* ==========================================
-PAGE OPEN
-========================================== */
-
-function openPage(pageId) {
+<header class="topbar">
 
 ```
-const pages =
-    document.querySelectorAll(".page");
+<button
+    class="menu-button"
+    onclick="toggleSidebar()">
+
+    ☰
+
+</button>
 
 
-pages.forEach(function(page) {
+<div class="logo">
 
-    page.classList.remove("active");
+    📚
 
-});
+    <span>
+        StudyVault
+    </span>
 
-
-const page =
-    document.getElementById(pageId);
-
-
-if (page) {
-
-    page.classList.add("active");
-
-}
+</div>
 
 
-const sidebar =
-    document.getElementById("sidebar");
+<div class="student-area">
 
+    👤
 
-sidebar.classList.remove("open");
+    <span id="topName">
+        Student
+    </span>
+
+</div>
 ```
 
-}
+</header>
 
-/* ==========================================
-TIME GREETING
-========================================== */
+<!-- ==================================================
+     SIDEBAR
+================================================== -->
 
-function updateGreeting() {
-
-```
-const hour =
-    new Date().getHours();
-
-
-let greeting;
-
-
-if (hour >= 5 && hour < 12) {
-
-    greeting = "Good Morning";
-
-}
-
-else if (hour >= 12 && hour < 17) {
-
-    greeting = "Good Afternoon";
-
-}
-
-else if (hour >= 17 && hour < 22) {
-
-    greeting = "Good Evening";
-
-}
-
-else {
-
-    greeting = "Good Night";
-
-}
-
-
-document.getElementById(
-    "timeGreeting"
-).textContent = greeting;
-```
-
-}
-
-/* ==========================================
-EDIT DETAILS
-========================================== */
-
-function editDetails() {
+<aside
+    id="sidebar"
+    class="sidebar">
 
 ```
-const name =
-    prompt(
-        "Enter your name:"
-    );
+<div class="sidebar-logo">
+
+    📚 StudyVault
+
+</div>
 
 
-if (name === null) {
+<button
+    onclick="openPage('dashboard')">
 
-    return;
+    🏠 Dashboard
 
-}
-
-
-if (name.trim() === "") {
-
-    alert(
-        "Please enter your name."
-    );
-
-    return;
-
-}
+</button>
 
 
-const roll =
-    prompt(
-        "Enter your Roll No:"
-    );
+<button
+    onclick="openPage('subjects')">
+
+    📚 My Subjects
+
+</button>
 
 
-if (roll === null) {
+<button
+    onclick="openPage('materials')">
 
-    return;
+    📝 Study Materials
 
-}
-
-
-const department =
-    prompt(
-        "Enter your Department:"
-    );
+</button>
 
 
-if (department === null) {
+<button
+    onclick="openPage('quiz')">
 
-    return;
+    🧠 Quiz Center
 
-}
-
-
-const college =
-    prompt(
-        "Enter your College Name:"
-    );
+</button>
 
 
-if (college === null) {
+<button
+    onclick="openPage('revision')">
 
-    return;
+    🔄 Revision
 
-}
-
-
-const mobile =
-    prompt(
-        "Enter your Mobile No:"
-    );
+</button>
 
 
-if (mobile === null) {
+<button
+    onclick="openPage('progress')">
 
-    return;
+    📊 Progress
 
-}
-
-
-const email =
-    prompt(
-        "Enter your Email:"
-    );
+</button>
 
 
-if (email === null) {
+<button
+    onclick="openPage('profile')">
 
-    return;
+    👤 Profile
 
-}
-
-
-
-student = {
-
-    name: name.trim(),
-
-    roll: roll.trim(),
-
-    department: department.trim(),
-
-    college: college.trim(),
-
-    mobile: mobile.trim(),
-
-    email: email.trim()
-
-};
-
-
-localStorage.setItem(
-
-    "studyVaultStudent",
-
-    JSON.stringify(student)
-
-);
-
-
-showStudent();
-
-
-alert(
-    "✅ Your details have been saved!"
-);
+</button>
 ```
 
-}
+</aside>
 
-/* ==========================================
-SHOW STUDENT
-========================================== */
+<!-- ==================================================
+     MAIN CONTENT
+================================================== -->
 
-function showStudent() {
+<main class="main">
 
-```
-const name =
-    student.name.trim();
+<!-- ==================================================
+     DASHBOARD
+================================================== -->
 
-
-/*
-   WELCOME MESSAGE
-
-   No name =
-   "Welcome 👋"
-
-   Name added =
-   "Welcome Name 👋"
-*/
-
-
-const welcomeName =
-    document.getElementById(
-        "welcomeName"
-    );
-
-
-if (name !== "") {
-
-    welcomeName.textContent =
-        " " + name;
-
-}
-
-else {
-
-    welcomeName.textContent =
-        "";
-
-}
-
-
-
-/* TOP BAR */
-
-const topName =
-    document.getElementById(
-        "topName"
-    );
-
-
-if (name !== "") {
-
-    topName.textContent =
-        name;
-
-}
-
-else {
-
-    topName.textContent =
-        "Student";
-
-}
-
-
-
-/* PROFILE */
-
-document.getElementById(
-    "profileName"
-).textContent =
-    name !== ""
-        ? name
-        : "Student";
-
-
-document.getElementById(
-    "roll"
-).textContent =
-    student.roll !== ""
-        ? student.roll
-        : "Not added";
-
-
-document.getElementById(
-    "department"
-).textContent =
-    student.department !== ""
-        ? student.department
-        : "Not added";
-
-
-document.getElementById(
-    "college"
-).textContent =
-    student.college !== ""
-        ? student.college
-        : "Not added";
-
-
-document.getElementById(
-    "mobile"
-).textContent =
-    student.mobile !== ""
-        ? student.mobile
-        : "Not added";
-
-
-document.getElementById(
-    "email"
-).textContent =
-    student.email !== ""
-        ? student.email
-        : "Not added";
-```
-
-}
-
-/* ==========================================
-SUBJECT MESSAGE
-========================================== */
-
-function subjectMessage(subject) {
+<section
+    id="dashboard"
+    class="page active">
 
 ```
-alert(
+<div class="welcome">
 
-    "📚 " +
-    subject +
-    "\n\n" +
-    "Notes, chapters, quizzes and practice tools will be added here."
 
-);
+    <p id="timeGreeting">
+        Welcome to StudyVault
+    </p>
+
+
+    <h1>
+
+        Welcome
+        <span id="welcomeName"></span>
+        👋
+
+    </h1>
+
+
+    <p>
+        Your personal study space.
+    </p>
+
+
+</div>
+
+
+
+<h2>
+    🎯 Today's Study
+</h2>
+
+
+<p class="subtitle">
+    Continue learning from your subjects.
+</p>
+
+
+
+<div class="cards">
+
+
+    <div class="study-card">
+
+
+        <div class="icon">
+            ⚛️
+        </div>
+
+
+        <h3>
+            Physics
+        </h3>
+
+
+        <p>
+            Learn concepts and practice.
+        </p>
+
+
+        <span>
+            Study
+        </span>
+
+
+        <button
+            onclick="openPhysics()">
+
+            Open Physics
+
+        </button>
+
+
+    </div>
+
+
+
+    <div class="study-card">
+
+
+        <div class="icon">
+            🧪
+        </div>
+
+
+        <h3>
+            Chemistry
+        </h3>
+
+
+        <p>
+            Chapters and revision.
+        </p>
+
+
+        <span>
+            Coming Soon
+        </span>
+
+
+        <button
+            onclick="comingSoon('Chemistry')">
+
+            Open
+
+        </button>
+
+
+    </div>
+
+
+
+    <div class="study-card">
+
+
+        <div class="icon">
+            📐
+        </div>
+
+
+        <h3>
+            Mathematics
+        </h3>
+
+
+        <p>
+            Practice mathematical problems.
+        </p>
+
+
+        <span>
+            Coming Soon
+        </span>
+
+
+        <button
+            onclick="comingSoon('Mathematics')">
+
+            Open
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<div class="section-title">
+
+    <h2>
+        📚 Your Subjects
+    </h2>
+
+    <p class="subtitle">
+        Select a subject to start studying.
+    </p>
+
+</div>
+
+
+
+<div class="subject-grid">
+
+
+    <div
+        class="subject"
+        onclick="openPhysics()">
+
+        <div>
+            ⚛️
+        </div>
+
+        <h3>
+            Physics
+        </h3>
+
+        <p>
+            Chapters • Notes • Quiz
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Chemistry')">
+
+        <div>
+            🧪
+        </div>
+
+        <h3>
+            Chemistry
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Mathematics')">
+
+        <div>
+            📐
+        </div>
+
+        <h3>
+            Mathematics
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Basic Electrical Engineering')">
+
+        <div>
+            ⚡
+        </div>
+
+        <h3>
+            Basic Electrical
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Basic Electronics Engineering')">
+
+        <div>
+            🔌
+        </div>
+
+        <h3>
+            Basic Electronics
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Communicative English')">
+
+        <div>
+            🗣️
+        </div>
+
+        <h3>
+            Communicative English
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+</div>
 ```
 
-}
+</section>
 
-/* ==========================================
-LOAD SAVED DETAILS
-========================================== */
+<!-- ==================================================
+     SUBJECTS
+================================================== -->
 
-function loadStudent() {
-
-```
-const saved =
-    localStorage.getItem(
-        "studyVaultStudent"
-    );
-
-
-if (saved) {
-
-    try {
-
-        student =
-            JSON.parse(saved);
-
-    }
-
-    catch {
-
-        student = {
-
-            name: "",
-            roll: "",
-            department: "",
-            college: "",
-            mobile: "",
-            email: ""
-
-        };
-
-    }
-
-}
-
-
-showStudent();
-```
-
-}
-
-/* ==========================================
-START WEBSITE
-========================================== */
-
-document.addEventListener(
+<section
+    id="subjects"
+    class="page">
 
 ```
-"DOMContentLoaded",
+<h1>
+    📚 My Subjects
+</h1>
 
-function() {
 
-    updateGreeting();
+<p class="subtitle">
+    Select a subject to start learning.
+</p>
 
-    loadStudent();
 
-}
+
+<div class="subject-grid">
+
+
+    <div
+        class="subject"
+        onclick="openPhysics()">
+
+        <div>⚛️</div>
+
+        <h3>
+            Physics
+        </h3>
+
+        <p>
+            Chapters • Notes • Quiz
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Chemistry')">
+
+        <div>🧪</div>
+
+        <h3>
+            Chemistry
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Mathematics')">
+
+        <div>📐</div>
+
+        <h3>
+            Mathematics
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Basic Electrical Engineering')">
+
+        <div>⚡</div>
+
+        <h3>
+            Basic Electrical
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Basic Electronics Engineering')">
+
+        <div>🔌</div>
+
+        <h3>
+            Basic Electronics
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="comingSoon('Communicative English')">
+
+        <div>🗣️</div>
+
+        <h3>
+            Communicative English
+        </h3>
+
+        <p>
+            Coming Soon
+        </p>
+
+    </div>
+
+
+</div>
 ```
 
-);
+</section>
 
-/* UPDATE GREETING */
+<!-- ==================================================
+     PHYSICS LEARNING PAGE
+================================================== -->
 
-setInterval(
+<section
+    id="physics"
+    class="page">
 
 ```
-updateGreeting,
+<button
+    class="back-button"
+    onclick="openPage('subjects')">
 
-60000
+    ← Back to Subjects
+
+</button>
+
+
+<div class="subject-header">
+
+
+    <div class="big-subject-icon">
+        ⚛️
+    </div>
+
+
+    <div>
+
+        <p>
+            Subject
+        </p>
+
+        <h1>
+            Physics
+        </h1>
+
+        <span>
+            Learn • Practice • Test
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- PHYSICS STATS -->
+
+<div class="physics-stats">
+
+
+    <div>
+
+        <span>
+            📖
+        </span>
+
+        <strong>
+            5
+        </strong>
+
+        <small>
+            Chapters
+        </small>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            📝
+        </span>
+
+        <strong>
+            0
+        </strong>
+
+        <small>
+            Completed
+        </small>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            🎯
+        </span>
+
+        <strong>
+            0%
+        </strong>
+
+        <small>
+            Progress
+        </small>
+
+    </div>
+
+
+</div>
+
+
+
+<h2>
+    📖 Physics Chapters
+</h2>
+
+
+<p class="subtitle">
+    Choose a chapter to start learning.
+</p>
+
+
+
+<div
+    id="physicsChapters"
+    class="chapter-grid">
+
+
+    <div
+        class="chapter"
+        onclick="openChapter(1)">
+
+
+        <div class="chapter-number">
+            01
+        </div>
+
+
+        <div>
+
+            <h3>
+                Units & Measurements
+            </h3>
+
+            <p>
+                Physical quantities, units,
+                dimensions and errors.
+            </p>
+
+        </div>
+
+
+        <span>
+            →
+        </span>
+
+
+    </div>
+
+
+
+    <div
+        class="chapter"
+        onclick="openChapter(2)">
+
+
+        <div class="chapter-number">
+            02
+        </div>
+
+
+        <div>
+
+            <h3>
+                Vectors
+            </h3>
+
+            <p>
+                Vector quantities,
+                addition and resolution.
+            </p>
+
+        </div>
+
+
+        <span>
+            →
+        </span>
+
+
+    </div>
+
+
+
+    <div
+        class="chapter"
+        onclick="openChapter(3)">
+
+
+        <div class="chapter-number">
+            03
+        </div>
+
+
+        <div>
+
+            <h3>
+                Laws of Motion
+            </h3>
+
+            <p>
+                Newton's laws,
+                force and momentum.
+            </p>
+
+        </div>
+
+
+        <span>
+            →
+        </span>
+
+
+    </div>
+
+
+
+    <div
+        class="chapter"
+        onclick="openChapter(4)">
+
+
+        <div class="chapter-number">
+            04
+        </div>
+
+
+        <div>
+
+            <h3>
+                Work, Energy & Power
+            </h3>
+
+            <p>
+                Work, kinetic energy,
+                potential energy and power.
+            </p>
+
+        </div>
+
+
+        <span>
+            →
+        </span>
+
+
+    </div>
+
+
+
+    <div
+        class="chapter"
+        onclick="openChapter(5)">
+
+
+        <div class="chapter-number">
+            05
+        </div>
+
+
+        <div>
+
+            <h3>
+                Current Electricity
+            </h3>
+
+            <p>
+                Current, voltage,
+                resistance and circuits.
+            </p>
+
+        </div>
+
+
+        <span>
+            →
+        </span>
+
+
+    </div>
+
+
+</div>
 ```
 
-);
+</section>
+
+<!-- ==================================================
+     CHAPTER STUDY PAGE
+================================================== -->
+
+<section
+    id="chapter"
+    class="page">
+
+```
+<button
+    class="back-button"
+    onclick="openPage('physics')">
+
+    ← Back to Physics
+
+</button>
+
+
+
+<div class="chapter-top">
+
+
+    <div>
+
+        <p>
+            Physics
+        </p>
+
+        <h1 id="chapterTitle">
+            Chapter
+        </h1>
+
+        <p id="chapterDescription">
+            Chapter description
+        </p>
+
+    </div>
+
+
+    <div class="chapter-icon">
+        📖
+    </div>
+
+
+</div>
+
+
+
+<div class="learning-layout">
+
+
+    <!-- NOTES -->
+
+    <div class="learning-main">
+
+
+        <div class="learning-card">
+
+
+            <div class="card-heading">
+
+                <h2>
+                    📖 Learn
+                </h2>
+
+                <span>
+                    Core Concepts
+                </span>
+
+            </div>
+
+
+            <div id="chapterContent">
+
+                Select a chapter to start learning.
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- KEY CONCEPTS -->
+
+        <div class="learning-card">
+
+
+            <div class="card-heading">
+
+                <h2>
+                    💡 Key Concepts
+                </h2>
+
+            </div>
+
+
+            <ul id="keyConcepts">
+
+            </ul>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="learning-side">
+
+
+        <div class="action-card">
+
+
+            <div>
+                📝
+            </div>
+
+
+            <h3>
+                Practice
+            </h3>
+
+
+            <p>
+                Test your understanding.
+            </p>
+
+
+            <button
+                onclick="startPractice()">
+
+                Start Practice
+
+            </button>
+
+
+        </div>
+
+
+
+        <div class="action-card">
+
+
+            <div>
+                🧠
+            </div>
+
+
+            <h3>
+                Quiz
+            </h3>
+
+
+            <p>
+                Check what you have learned.
+            </p>
+
+
+            <button
+                onclick="startQuiz()">
+
+                Start Quiz
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     MATERIALS
+================================================== -->
+
+<section
+    id="materials"
+    class="page">
+
+```
+<h1>
+    📝 Study Materials
+</h1>
+
+
+<p class="subtitle">
+    Keep your notes and resources here.
+</p>
+
+
+<div class="empty">
+
+
+    📂
+
+
+    <h2>
+        Your StudyVault is Empty
+    </h2>
+
+
+    <p>
+        Study materials will be added here.
+    </p>
+
+
+    <button
+        class="primary">
+
+        + Add Material
+
+    </button>
+
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     QUIZ CENTER
+================================================== -->
+
+<section
+    id="quiz"
+    class="page">
+
+```
+<h1>
+    🧠 Quiz Center
+</h1>
+
+
+<p class="subtitle">
+    Test your knowledge.
+</p>
+
+
+<div class="quiz-grid">
+
+
+    <div class="quiz-card">
+
+        <div>
+            ⚛️
+        </div>
+
+        <h3>
+            Physics
+        </h3>
+
+        <p>
+            Chapter-wise quizzes.
+        </p>
+
+        <button
+            onclick="openPhysics()">
+
+            Select Chapter
+
+        </button>
+
+    </div>
+
+
+    <div class="quiz-card">
+
+        <div>
+            🧪
+        </div>
+
+        <h3>
+            Chemistry
+        </h3>
+
+        <p>
+            Coming soon.
+        </p>
+
+        <button
+            onclick="comingSoon('Chemistry Quiz')">
+
+            Coming Soon
+
+        </button>
+
+    </div>
+
+
+    <div class="quiz-card">
+
+        <div>
+            📐
+        </div>
+
+        <h3>
+            Mathematics
+        </h3>
+
+        <p>
+            Coming soon.
+        </p>
+
+        <button
+            onclick="comingSoon('Mathematics Quiz')">
+
+            Coming Soon
+
+        </button>
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     REVISION
+================================================== -->
+
+<section
+    id="revision"
+    class="page">
+
+```
+<h1>
+    🔄 Revision Center
+</h1>
+
+
+<p class="subtitle">
+    Topics that need revision.
+</p>
+
+
+<div class="revision">
+
+
+    <div>
+
+        🔴
+
+        <strong>
+            Current Electricity
+        </strong>
+
+        <span>
+            Physics
+        </span>
+
+        <button>
+            Revise
+        </button>
+
+    </div>
+
+
+    <div>
+
+        🟡
+
+        <strong>
+            Laws of Motion
+        </strong>
+
+        <span>
+            Physics
+        </span>
+
+        <button>
+            Revise
+        </button>
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PROGRESS
+================================================== -->
+
+<section
+    id="progress"
+    class="page">
+
+```
+<h1>
+    📊 Progress
+</h1>
+
+
+<p class="subtitle">
+    Track your learning journey.
+</p>
+
+
+<div class="stats">
+
+
+    <div>
+
+        📚
+
+        <strong>
+            0
+        </strong>
+
+        <span>
+            Study Sessions
+        </span>
+
+    </div>
+
+
+    <div>
+
+        📝
+
+        <strong>
+            0
+        </strong>
+
+        <span>
+            Questions Solved
+        </span>
+
+    </div>
+
+
+    <div>
+
+        🎯
+
+        <strong>
+            0%
+        </strong>
+
+        <span>
+            Average Score
+        </span>
+
+    </div>
+
+
+    <div>
+
+        🔥
+
+        <strong>
+            0
+        </strong>
+
+        <span>
+            Day Streak
+        </span>
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PROFILE
+================================================== -->
+
+<section
+    id="profile"
+    class="page">
+
+```
+<h1>
+    👤 Profile
+</h1>
+
+
+<p class="subtitle">
+    Add your details to personalize StudyVault.
+</p>
+
+
+<div class="profile">
+
+
+    <div class="avatar">
+        👤
+    </div>
+
+
+    <h2 id="profileName">
+        Student
+    </h2>
+
+
+    <p>
+        StudyVault Student
+    </p>
+
+
+    <div class="details">
+
+
+        <div>
+
+            <span>
+                Roll No
+            </span>
+
+            <strong id="roll">
+                Not added
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Department
+            </span>
+
+            <strong id="department">
+                Not added
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                College
+            </span>
+
+            <strong id="college">
+                Not added
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Mobile No
+            </span>
+
+            <strong id="mobile">
+                Not added
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Email
+            </span>
+
+            <strong id="email">
+                Not added
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="primary"
+        onclick="editDetails()">
+
+        ✏️ Edit Details
+
+    </button>
+
+
+</div>
+```
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
