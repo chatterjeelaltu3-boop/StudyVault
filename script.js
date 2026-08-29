@@ -1,122 +1,175 @@
-/* =========================================
-STUDYVAULT - MAIN JAVASCRIPT
-========================================= */
+/* ==========================================
+STUDYVAULT
+MAIN JAVASCRIPT
+========================================== */
 
-/* =========================================
-SIDEBAR
-========================================= */
-
-function toggleSidebar() {
-const sidebar = document.getElementById("sidebar");
-
-```
-sidebar.classList.toggle("open");
-```
-
-}
-
-/* =========================================
-PAGE NAVIGATION
-========================================= */
-
-function showSection(sectionId) {
-
-```
-const sections = document.querySelectorAll(".page-section");
-
-sections.forEach(function(section) {
-    section.classList.remove("active");
-});
-
-
-const selectedSection = document.getElementById(sectionId);
-
-if (selectedSection) {
-    selectedSection.classList.add("active");
-}
-
-
-// Close sidebar after selecting a page
-const sidebar = document.getElementById("sidebar");
-
-if (window.innerWidth <= 700) {
-    sidebar.classList.remove("open");
-}
-```
-
-}
-
-/* =========================================
-WELCOME MESSAGE
-========================================= */
-
-function updateGreeting() {
-
-```
-const hour = new Date().getHours();
-
-let greeting = "Good Evening";
-
-if (hour >= 5 && hour < 12) {
-    greeting = "Good Morning";
-}
-
-else if (hour >= 12 && hour < 17) {
-    greeting = "Good Afternoon";
-}
-
-else if (hour >= 17 && hour < 22) {
-    greeting = "Good Evening";
-}
-
-else {
-    greeting = "Good Night";
-}
-
-
-const greetingElement = document.getElementById("greeting");
-
-if (greetingElement) {
-    greetingElement.textContent = greeting;
-}
-```
-
-}
-
-/* =========================================
+/* ==========================================
 PROFILE DATA
-========================================= */
+========================================== */
 
 let profileData = {
 
 ```
-name: "Ayush Chatterjee",
-
+name: "",
 roll: "",
-
 department: "",
-
 college: "",
-
 mobile: "",
-
 email: ""
 ```
 
 };
 
-/* =========================================
+/* ==========================================
+SIDEBAR
+========================================== */
+
+function toggleSidebar() {
+
+```
+const sidebar =
+    document.getElementById("sidebar");
+
+sidebar.classList.toggle("open");
+```
+
+}
+
+/* ==========================================
+PAGE NAVIGATION
+========================================== */
+
+function showSection(sectionId) {
+
+```
+const sections =
+    document.querySelectorAll(
+        ".page-section"
+    );
+
+
+sections.forEach(function(section) {
+
+    section.classList.remove("active");
+
+});
+
+
+const selectedSection =
+    document.getElementById(sectionId);
+
+
+if (selectedSection) {
+
+    selectedSection.classList.add("active");
+
+}
+
+
+const sidebar =
+    document.getElementById("sidebar");
+
+
+if (window.innerWidth <= 700) {
+
+    sidebar.classList.remove("open");
+
+}
+```
+
+}
+
+/* ==========================================
+GREETING
+========================================== */
+
+function updateGreeting() {
+
+```
+const hour =
+    new Date().getHours();
+
+
+let greeting;
+
+
+if (hour >= 5 && hour < 12) {
+
+    greeting = "Good Morning";
+
+}
+
+else if (hour >= 12 && hour < 17) {
+
+    greeting = "Good Afternoon";
+
+}
+
+else if (hour >= 17 && hour < 22) {
+
+    greeting = "Good Evening";
+
+}
+
+else {
+
+    greeting = "Good Night";
+
+}
+
+
+const greetingElement =
+    document.getElementById(
+        "greeting"
+    );
+
+
+if (greetingElement) {
+
+    greetingElement.textContent =
+        greeting;
+
+}
+```
+
+}
+
+/* ==========================================
 LOAD PROFILE
-========================================= */
+========================================== */
 
 function loadProfile() {
 
 ```
-const savedProfile = localStorage.getItem("studyVaultProfile");
+const savedProfile =
+    localStorage.getItem(
+        "studyVaultProfile"
+    );
+
 
 if (savedProfile) {
 
-    profileData = JSON.parse(savedProfile);
+    try {
+
+        profileData =
+            JSON.parse(savedProfile);
+
+    }
+
+    catch (error) {
+
+        profileData = {
+
+            name: "",
+            roll: "",
+            department: "",
+            college: "",
+            mobile: "",
+            email: ""
+
+        };
+
+    }
 
 }
 
@@ -126,36 +179,73 @@ updateProfileUI();
 
 }
 
-/* =========================================
+/* ==========================================
 UPDATE PROFILE UI
-========================================= */
+========================================== */
 
 function updateProfileUI() {
 
 ```
-const name = profileData.name || "Ayush Chatterjee";
+const hasName =
+    profileData.name &&
+    profileData.name.trim() !== "";
+
+
+const name =
+    hasName
+        ? profileData.name.trim()
+        : "";
 
 
 const welcomeName =
-    document.getElementById("welcomeName");
+    document.getElementById(
+        "welcomeName"
+    );
+
 
 const topProfileName =
-    document.getElementById("topProfileName");
+    document.getElementById(
+        "topProfileName"
+    );
+
 
 const profileName =
-    document.getElementById("profileName");
+    document.getElementById(
+        "profileName"
+    );
+
+
+/*
+   If no name has been added,
+   don't show anybody's name.
+*/
 
 
 if (welcomeName) {
-    welcomeName.textContent = name;
+
+    welcomeName.textContent =
+        name;
+
 }
+
 
 if (topProfileName) {
-    topProfileName.textContent = name;
+
+    topProfileName.textContent =
+        hasName
+            ? name
+            : "Student";
+
 }
 
+
 if (profileName) {
-    profileName.textContent = name;
+
+    profileName.textContent =
+        hasName
+            ? name
+            : "Student";
+
 }
 
 
@@ -164,20 +254,24 @@ setProfileValue(
     profileData.roll
 );
 
+
 setProfileValue(
     "profileDepartment",
     profileData.department
 );
+
 
 setProfileValue(
     "profileCollege",
     profileData.college
 );
 
+
 setProfileValue(
     "profileMobile",
     profileData.mobile
 );
+
 
 setProfileValue(
     "profileEmail",
@@ -187,122 +281,176 @@ setProfileValue(
 
 }
 
-/* =========================================
-PROFILE VALUE HELPER
-========================================= */
+/* ==========================================
+PROFILE VALUE
+========================================== */
 
-function setProfileValue(elementId, value) {
+function setProfileValue(
+elementId,
+value
+) {
 
 ```
-const element = document.getElementById(elementId);
+const element =
+    document.getElementById(
+        elementId
+    );
+
 
 if (!element) {
+
     return;
+
 }
 
 
-if (value && value.trim() !== "") {
+if (
+    value &&
+    value.toString().trim() !== ""
+) {
 
-    element.textContent = value;
+    element.textContent =
+        value;
 
 }
 
 else {
 
-    element.textContent = "Not added";
+    element.textContent =
+        "Not added";
 
 }
 ```
 
 }
 
-/* =========================================
-EDIT PROFILE
-========================================= */
+/* ==========================================
+EDIT DETAILS
+========================================== */
 
 function editProfile() {
 
 ```
-const newName = prompt(
-    "Enter your name:",
-    profileData.name
-);
+const newName =
+    prompt(
+        "Enter your name:"
+    );
+
 
 if (newName === null) {
+
     return;
+
 }
 
 
-const newRoll = prompt(
-    "Enter your Roll Number:",
-    profileData.roll
-);
+if (newName.trim() === "") {
+
+    alert(
+        "Please enter your name."
+    );
+
+    return;
+
+}
+
+
+const newRoll =
+    prompt(
+        "Enter your Roll Number:"
+    );
+
 
 if (newRoll === null) {
+
     return;
+
 }
 
 
-const newDepartment = prompt(
-    "Enter your Department:",
-    profileData.department
-);
+const newDepartment =
+    prompt(
+        "Enter your Department:"
+    );
+
 
 if (newDepartment === null) {
+
     return;
+
 }
 
 
-const newCollege = prompt(
-    "Enter your College Name:",
-    profileData.college
-);
+const newCollege =
+    prompt(
+        "Enter your College Name:"
+    );
+
 
 if (newCollege === null) {
+
     return;
+
 }
 
 
-const newMobile = prompt(
-    "Enter your Mobile Number:",
-    profileData.mobile
-);
+const newMobile =
+    prompt(
+        "Enter your Mobile Number:"
+    );
+
 
 if (newMobile === null) {
+
     return;
+
 }
 
 
-const newEmail = prompt(
-    "Enter your Email:",
-    profileData.email
-);
+const newEmail =
+    prompt(
+        "Enter your Email:"
+    );
+
 
 if (newEmail === null) {
+
     return;
+
 }
 
 
 profileData = {
 
-    name: newName.trim() || "Ayush Chatterjee",
+    name:
+        newName.trim(),
 
-    roll: newRoll.trim(),
+    roll:
+        newRoll.trim(),
 
-    department: newDepartment.trim(),
+    department:
+        newDepartment.trim(),
 
-    college: newCollege.trim(),
+    college:
+        newCollege.trim(),
 
-    mobile: newMobile.trim(),
+    mobile:
+        newMobile.trim(),
 
-    email: newEmail.trim()
+    email:
+        newEmail.trim()
 
 };
 
 
 localStorage.setItem(
+
     "studyVaultProfile",
-    JSON.stringify(profileData)
+
+    JSON.stringify(
+        profileData
+    )
+
 );
 
 
@@ -310,37 +458,42 @@ updateProfileUI();
 
 
 alert(
-    "✅ Profile updated successfully!"
+    "✅ Details saved successfully!"
 );
 ```
 
 }
 
-/* =========================================
+/* ==========================================
 SUBJECT
-========================================= */
+========================================== */
 
 function openSubject(subjectName) {
 
 ```
 alert(
+
     "📚 " +
     subjectName +
-    "\n\nSubject page will be available in the next version."
+    "\n\n" +
+    "Study tools for this subject will be added soon."
+
 );
 ```
 
 }
 
-/* =========================================
-PAGE LOAD
-========================================= */
+/* ==========================================
+START
+========================================== */
 
 document.addEventListener(
-"DOMContentLoaded",
-function() {
 
 ```
+"DOMContentLoaded",
+
+function() {
+
     updateGreeting();
 
     loadProfile();
@@ -350,12 +503,16 @@ function() {
 
 );
 
-/* =========================================
-UPDATE GREETING EVERY MINUTE
-========================================= */
+/* ==========================================
+UPDATE TIME GREETING
+========================================== */
 
 setInterval(
-updateGreeting,
-60000
-);
 
+```
+updateGreeting,
+
+60000
+```
+
+);
