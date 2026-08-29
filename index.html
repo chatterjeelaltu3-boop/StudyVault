@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>StudyVault</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- TOP NAVBAR -->
+<header class="topbar">
+
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="brand">
+        <span class="brand-icon">📚</span>
+        <span>StudyVault</span>
+    </div>
+
+    <div class="top-profile">
+        <span>👤</span>
+        <span id="topProfileName">Ayush Chatterjee</span>
+    </div>
+
+</header>
+
+
+<!-- SIDEBAR -->
+<aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-title">
+        📚 StudyVault
+    </div>
+
+    <nav>
+
+        <button onclick="showSection('dashboard')">
+            🏠 Dashboard
+        </button>
+
+        <button onclick="showSection('subjects')">
+            📚 My Subjects
+        </button>
+
+        <button onclick="showSection('materials')">
+            📝 Study Materials
+        </button>
+
+        <button onclick="showSection('ai-tools')">
+            🧠 AI Study Tools
+        </button>
+
+        <button onclick="showSection('revision')">
+            🔄 Revision Center
+        </button>
+
+        <button onclick="showSection('progress')">
+            📊 Progress
+        </button>
+
+        <button onclick="showSection('profile')">
+            👤 Profile
+        </button>
+
+        <button onclick="showSection('settings')">
+            ⚙️ Settings
+        </button>
+
+    </nav>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main id="mainContent" class="main-content">
+
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page-section active">
+
+        <div class="welcome-box">
+
+            <div>
+                <p class="small-text" id="greeting">
+                    Good Evening
+                </p>
+
+                <h1>
+                    Welcome, <span id="welcomeName">Ayush Chatterjee</span> 👋
+                </h1>
+
+                <p>
+                    Your personal study space is ready.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- TODAY'S FOCUS -->
+
+        <div class="section-heading">
+
+            <div>
+                <h2>🎯 Today's Study</h2>
+                <p>Your recommended study activities.</p>
+            </div>
+
+        </div>
+
+
+        <div class="study-grid">
+
+            <div class="study-card urgent">
+
+                <div class="card-icon">⚡</div>
+
+                <h3>Physics</h3>
+
+                <p>Current Electricity</p>
+
+                <span>20 minutes</span>
+
+                <button>
+                    Start Revision
+                </button>
+
+            </div>
+
+
+            <div class="study-card">
+
+                <div class="card-icon">📐</div>
+
+                <h3>Mathematics</h3>
+
+                <p>Practice Problems</p>
+
+                <span>30 minutes</span>
+
+                <button>
+                    Start Practice
+                </button>
+
+            </div>
+
+
+            <div class="study-card">
+
+                <div class="card-icon">🧪</div>
+
+                <h3>Chemistry</h3>
+
+                <p>Quick Revision</p>
+
+                <span>15 minutes</span>
+
+                <button>
+                    Start Revision
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUBJECTS -->
+
+        <div class="section-heading">
+
+            <div>
+                <h2>📚 Your Subjects</h2>
+                <p>Continue learning from your subjects.</p>
+            </div>
+
+            <button class="add-btn" onclick="showSection('subjects')">
+                + Add Subject
+            </button>
+
+        </div>
+
+
+        <div class="subject-grid">
+
+            <div class="subject-card" onclick="openSubject('Physics')">
+                <div class="subject-icon">⚛️</div>
+                <h3>Physics</h3>
+                <p>Progress: 72%</p>
+                <div class="progress-bar">
+                    <div style="width:72%"></div>
+                </div>
+            </div>
+
+
+            <div class="subject-card" onclick="openSubject('Chemistry')">
+                <div class="subject-icon">🧪</div>
+                <h3>Chemistry</h3>
+                <p>Progress: 65%</p>
+                <div class="progress-bar">
+                    <div style="width:65%"></div>
+                </div>
+            </div>
+
+
+            <div class="subject-card" onclick="openSubject('Mathematics')">
+                <div class="subject-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>Progress: 81%</p>
+                <div class="progress-bar">
+                    <div style="width:81%"></div>
+                </div>
+            </div>
+
+
+            <div class="subject-card" onclick="openSubject('Basic Electrical Engineering')">
+                <div class="subject-icon">⚡</div>
+                <h3>Basic Electrical</h3>
+                <p>Progress: 58%</p>
+                <div class="progress-bar">
+                    <div style="width:58%"></div>
+                </div>
+            </div>
+
+
+            <div class="subject-card" onclick="openSubject('Basic Electronics Engineering')">
+                <div class="subject-icon">🔌</div>
+                <h3>Basic Electronics</h3>
+                <p>Progress: 69%</p>
+                <div class="progress-bar">
+                    <div style="width:69%"></div>
+                </div>
+            </div>
+
+
+            <div class="subject-card" onclick="openSubject('Communicative English')">
+                <div class="subject-icon">🗣️</div>
+                <h3>Communicative English</h3>
+                <p>Progress: 76%</p>
+                <div class="progress-bar">
+                    <div style="width:76%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUBJECTS -->
+    <section id="subjects" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>📚 My Subjects</h1>
+                <p>Manage your subjects and learning materials.</p>
+            </div>
+
+            <button class="primary-btn">
+                + Add Subject
+            </button>
+
+        </div>
+
+        <div class="subject-grid">
+
+            <div class="subject-card">
+                <div class="subject-icon">⚛️</div>
+                <h3>Physics</h3>
+                <p>8 Chapters</p>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🧪</div>
+                <h3>Chemistry</h3>
+                <p>8 Chapters</p>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>10 Chapters</p>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">⚡</div>
+                <h3>Basic Electrical Engineering</h3>
+                <p>7 Chapters</p>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🔌</div>
+                <h3>Basic Electronics Engineering</h3>
+                <p>7 Chapters</p>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🗣️</div>
+                <h3>Communicative English</h3>
+                <p>6 Chapters</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MATERIALS -->
+    <section id="materials" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>📝 Study Materials</h1>
+                <p>Keep your notes and resources in one place.</p>
+            </div>
+
+            <button class="primary-btn">
+                + Add Material
+            </button>
+
+        </div>
+
+        <div class="empty-state">
+
+            <div>📂</div>
+
+            <h2>Your Study Vault is Empty</h2>
+
+            <p>
+                Upload notes, PDFs, images or add useful web resources.
+            </p>
+
+            <button class="primary-btn">
+                Upload Material
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI TOOLS -->
+    <section id="ai-tools" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>🧠 AI Study Tools</h1>
+                <p>Turn your study materials into useful learning resources.</p>
+            </div>
+
+        </div>
+
+
+        <div class="tool-grid">
+
+            <div class="tool-card">
+                <div>📄</div>
+                <h3>AI Summary</h3>
+                <p>Turn long notes into simple summaries.</p>
+                <button>Use Tool</button>
+            </div>
+
+            <div class="tool-card">
+                <div>❓</div>
+                <h3>Question Generator</h3>
+                <p>Create practice questions from your notes.</p>
+                <button>Use Tool</button>
+            </div>
+
+            <div class="tool-card">
+                <div>📝</div>
+                <h3>MCQ Generator</h3>
+                <p>Automatically create MCQ quizzes.</p>
+                <button>Use Tool</button>
+            </div>
+
+            <div class="tool-card">
+                <div>🃏</div>
+                <h3>Flashcards</h3>
+                <p>Generate quick revision flashcards.</p>
+                <button>Use Tool</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REVISION -->
+    <section id="revision" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>🔄 Revision Center</h1>
+                <p>Focus on the topics that need your attention.</p>
+            </div>
+
+        </div>
+
+        <div class="revision-box">
+
+            <h2>🎯 Recommended Revision</h2>
+
+            <div class="revision-item">
+                <span>🔴</span>
+                <div>
+                    <strong>Kirchhoff's Laws</strong>
+                    <p>Physics • 15 minutes</p>
+                </div>
+                <button>Revise</button>
+            </div>
+
+            <div class="revision-item">
+                <span>🟡</span>
+                <div>
+                    <strong>Organic Reactions</strong>
+                    <p>Chemistry • 10 minutes</p>
+                </div>
+                <button>Revise</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section id="progress" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>📊 Your Progress</h1>
+                <p>Track your learning journey.</p>
+            </div>
+
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span>📚</span>
+                <h3>24</h3>
+                <p>Study Sessions</p>
+            </div>
+
+            <div class="stat-card">
+                <span>📝</span>
+                <h3>145</h3>
+                <p>Questions Solved</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🎯</span>
+                <h3>78%</h3>
+                <p>Average Score</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🔥</span>
+                <h3>7 Days</h3>
+                <p>Study Streak</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+    <section id="profile" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>👤 My Profile</h1>
+                <p>Your StudyVault profile information.</p>
+            </div>
+
+        </div>
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <h2 id="profileName">Ayush Chatterjee</h2>
+
+            <p class="profile-role">
+                Student / Administrator
+            </p>
+
+
+            <div class="profile-details">
+
+                <div>
+                    <span>🎓 Roll No</span>
+                    <strong id="profileRoll">Not added</strong>
+                </div>
+
+                <div>
+                    <span>🏢 Department</span>
+                    <strong id="profileDepartment">Not added</strong>
+                </div>
+
+                <div>
+                    <span>🏫 College Name</span>
+                    <strong id="profileCollege">Not added</strong>
+                </div>
+
+                <div>
+                    <span>📱 Mobile No</span>
+                    <strong id="profileMobile">Not added</strong>
+                </div>
+
+                <div>
+                    <span>📧 Email</span>
+                    <strong id="profileEmail">Not added</strong>
+                </div>
+
+            </div>
+
+
+            <button class="primary-btn">
+                ✏️ Edit Profile
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SETTINGS -->
+    <section id="settings" class="page-section">
+
+        <div class="page-header">
+
+            <div>
+                <h1>⚙️ Settings</h1>
+                <p>Customize your StudyVault experience.</p>
+            </div>
+
+        </div>
+
+        <div class="settings-card">
+
+            <div class="setting-row">
+                <div>
+                    <strong>🔔 Notifications</strong>
+                    <p>Study reminders and revision alerts.</p>
+                </div>
+
+                <input type="checkbox" checked>
+            </div>
+
+
+            <div class="setting-row">
+                <div>
+                    <strong>🌙 Dark Mode</strong>
+                    <p>Switch between light and dark appearance.</p>
+                </div>
+
+                <input type="checkbox">
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+```
+
+</body>
+</html>
+
