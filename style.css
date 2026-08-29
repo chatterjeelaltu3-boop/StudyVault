@@ -14,8 +14,6 @@
 --white: #ffffff;
 --border: #e5e7eb;
 --danger: #ef4444;
---warning: #f59e0b;
---success: #10b981;
 --shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
 }
 
@@ -26,9 +24,7 @@ color: var(--text);
 min-height: 100vh;
 }
 
-/* =========================
-TOP BAR
-========================= */
+/* TOP BAR */
 
 .topbar {
 height: 70px;
@@ -37,7 +33,6 @@ background: var(--white);
 border-bottom: 1px solid var(--border);
 display: flex;
 align-items: center;
-justify-content: space-between;
 padding: 0 28px;
 position: fixed;
 top: 0;
@@ -54,19 +49,16 @@ background: var(--primary-light);
 color: var(--primary);
 font-size: 22px;
 cursor: pointer;
-transition: 0.2s ease;
 }
 
 .menu-btn:hover {
 background: #dbeafe;
-transform: scale(1.04);
 }
 
 .brand {
 display: flex;
 align-items: center;
 gap: 10px;
-margin-right: auto;
 margin-left: 16px;
 font-size: 22px;
 font-weight: 800;
@@ -78,6 +70,7 @@ font-size: 27px;
 }
 
 .top-profile {
+margin-left: auto;
 display: flex;
 align-items: center;
 gap: 9px;
@@ -85,9 +78,7 @@ font-size: 14px;
 font-weight: 600;
 }
 
-/* =========================
-SIDEBAR
-========================= */
+/* SIDEBAR */
 
 .sidebar {
 position: fixed;
@@ -131,18 +122,14 @@ text-align: left;
 font-size: 15px;
 font-weight: 600;
 cursor: pointer;
-transition: 0.2s ease;
 }
 
 .sidebar nav button:hover {
 background: var(--primary-light);
 color: var(--primary);
-transform: translateX(3px);
 }
 
-/* =========================
-MAIN CONTENT
-========================= */
+/* MAIN */
 
 .main-content {
 padding: 100px 30px 40px;
@@ -158,17 +145,29 @@ display: none;
 display: block;
 }
 
-/* =========================
-WELCOME BOX
-========================= */
+/* WELCOME */
 
 .welcome-box {
-background: linear-gradient(135deg, #2563eb, #4f46e5);
+background: linear-gradient(
+135deg,
+#2563eb,
+#4f46e5
+);
+
+```
 color: white;
+
 border-radius: 24px;
+
 padding: 35px;
+
 margin-bottom: 35px;
-box-shadow: 0 15px 35px rgba(37, 99, 235, 0.20);
+
+box-shadow:
+    0 15px 35px
+    rgba(37, 99, 235, 0.20);
+```
+
 }
 
 .welcome-box h1 {
@@ -183,12 +182,9 @@ opacity: 0.92;
 .small-text {
 font-size: 14px;
 font-weight: 700;
-opacity: 0.85 !important;
 }
 
-/* =========================
-HEADINGS
-========================= */
+/* HEADINGS */
 
 .section-heading {
 display: flex;
@@ -222,9 +218,7 @@ font-size: 30px;
 margin-bottom: 6px;
 }
 
-/* =========================
-STUDY CARDS
-========================= */
+/* STUDY CARDS */
 
 .study-grid {
 display: grid;
@@ -238,12 +232,6 @@ border: 1px solid var(--border);
 border-radius: 20px;
 padding: 24px;
 box-shadow: var(--shadow);
-transition: 0.2s ease;
-}
-
-.study-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
 }
 
 .study-card.urgent {
@@ -283,7 +271,6 @@ padding: 10px 15px;
 border-radius: 10px;
 font-weight: 700;
 cursor: pointer;
-transition: 0.2s ease;
 }
 
 .study-card button:hover,
@@ -292,9 +279,7 @@ transition: 0.2s ease;
 background: var(--primary-dark);
 }
 
-/* =========================
-SUBJECTS
-========================= */
+/* SUBJECTS */
 
 .subject-grid {
 display: grid;
@@ -309,11 +294,10 @@ border-radius: 20px;
 padding: 24px;
 box-shadow: var(--shadow);
 cursor: pointer;
-transition: 0.2s ease;
 }
 
 .subject-card:hover {
-transform: translateY(-5px);
+transform: translateY(-4px);
 border-color: #bfdbfe;
 }
 
@@ -354,9 +338,7 @@ background: var(--primary);
 border-radius: 20px;
 }
 
-/* =========================
-BUTTONS
-========================= */
+/* BUTTONS */
 
 .primary-btn,
 .add-btn {
@@ -367,18 +349,14 @@ padding: 12px 17px;
 border-radius: 11px;
 font-weight: 700;
 cursor: pointer;
-transition: 0.2s ease;
 }
 
 .primary-btn:hover,
 .add-btn:hover {
 background: var(--primary-dark);
-transform: translateY(-1px);
 }
 
-/* =========================
-EMPTY STATE
-========================= */
+/* EMPTY STATE */
 
 .empty-state {
 background: var(--white);
@@ -402,9 +380,7 @@ color: var(--muted);
 margin-bottom: 20px;
 }
 
-/* =========================
-AI TOOLS
-========================= */
+/* AI TOOLS */
 
 .tool-grid {
 display: grid;
@@ -436,9 +412,7 @@ font-size: 14px;
 margin-bottom: 20px;
 }
 
-/* =========================
-REVISION
-========================= */
+/* REVISION */
 
 .revision-box {
 background: var(--white);
@@ -481,9 +455,7 @@ color: var(--muted);
 font-size: 13px;
 }
 
-/* =========================
-PROGRESS STATS
-========================= */
+/* PROGRESS */
 
 .stats-grid {
 display: grid;
@@ -512,9 +484,7 @@ margin: 10px 0 5px;
 color: var(--muted);
 }
 
-/* =========================
-PROFILE
-========================= */
+/* PROFILE */
 
 .profile-card {
 max-width: 750px;
@@ -574,9 +544,7 @@ margin-bottom: 6px;
 font-size: 14px;
 }
 
-/* =========================
-SETTINGS
-========================= */
+/* SETTINGS */
 
 .settings-card {
 max-width: 850px;
@@ -609,9 +577,7 @@ color: var(--muted);
 font-size: 13px;
 }
 
-/* =========================
-RESPONSIVE
-========================= */
+/* MOBILE */
 
 @media (max-width: 1100px) {
 
@@ -684,4 +650,3 @@ RESPONSIVE
 ```
 
 }
-
